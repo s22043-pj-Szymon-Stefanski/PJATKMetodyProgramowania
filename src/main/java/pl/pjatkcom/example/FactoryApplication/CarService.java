@@ -11,10 +11,10 @@ public class CarService {
         return car;
     }
 
-    public void addWheel(Car car,int wheel) {
-        if (car.getWheels() + wheel < 6 ) {
+    public void addWheel(Car car) {
+        if (car.getWheels() < 5 ) {
             System.out.println("You add wheels");
-            System.out.println(car.getWheels() + wheel);
+            System.out.println(car.getWheels() + 1);
         } else {
             System.out.println("You can't add more wheels!!!");
         }

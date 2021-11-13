@@ -1,10 +1,22 @@
 package pl.pjatkcom.example.FactoryApplication;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Car {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String brand;
     private String model;
     private int wheels;
     private int gears;
+
 
     public Car() {
     }
@@ -46,5 +58,14 @@ public class Car {
 
     public void setGears(int gears) {
         this.gears = gears;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    public Long getId() {
+        return id;
     }
 }
