@@ -48,10 +48,19 @@ public class CarService {
         return car.getModel().toLowerCase(Locale.ROOT);
     }
 
+    public String changeBrand(Car car, String brand) {
+        car.setBrand(brand);
+        return car.getBrand();
+    }
+
+    public String changeModel (Car car,String model) {
+        car.setModel(model);
+        return car.getModel();
+    }
+
     public void changeGearOneUP(Car car) {
         if (car.getGears() < 6) {
-            System.out.println(car.getGears() + 1);
-            System.out.println("You change gear");
+            car.setGears(car.getGears() + 1);
         } else {
             System.out.println("You can't change gear up");
         }
@@ -59,16 +68,15 @@ public class CarService {
 
     public void changeGearOneDOWN(Car car) {
         if (car.getGears() > 0) {
-            System.out.println(car.getGears() - 1);
-            System.out.println("You change gear");
+            car.setGears(car.getGears() - 1);
         } else {
             System.out.println("You can't change gear down");
         }
-
     }
 
     public void removeOneWheel(Car car) {
         car.setWheels(car.getWheels() - 1);
+        System.out.println("You remove one wheel");
     }
 
     public Car findById(Long id) {
