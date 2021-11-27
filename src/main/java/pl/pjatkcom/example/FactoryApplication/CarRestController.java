@@ -23,7 +23,8 @@ public class CarRestController {
 
     @GetMapping("/build")
     public ResponseEntity<Car> getCar(@RequestParam String brand, @RequestParam String model) {
-        return ResponseEntity.ok(carService.buildCar(brand,model));
+        Car car = carService.buildCar("Ford", "Mustang");
+        return ResponseEntity.ok(car);
     }
 
     @GetMapping("/find{id}")
