@@ -20,9 +20,10 @@ public class CarRestController {
         this.carService = carService;
     }
 
-    @GetMapping
+
+    @GetMapping("/find")
     //ResponseEntity - represent the whole HTTP response: status code, headers and body
-    public ResponseEntity<Car> getCar() {
-        return ResponseEntity.ok(carService.buildCar("Ford","Mustang"));
+    public ResponseEntity<Car> findCar() {
+        return ResponseEntity.ok(carService.findById(10L));
     }
 }
