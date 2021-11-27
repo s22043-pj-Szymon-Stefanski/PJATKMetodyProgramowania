@@ -1,9 +1,7 @@
 package pl.pjatkcom.example.FactoryApplication;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 //By RestController user can communicate with the server
 @RestController
@@ -20,10 +18,17 @@ public class CarRestController {
         this.carService = carService;
     }
 
+    @GetMapping
+    public ResponseEntity<String> printHelloWorld() {return ResponseEntity.ok("Hello world");}
 
-    @GetMapping("/find")
+    @GetMapping("/build")
+    public ResponseEntity<Car> getCar(@RequestParam String brand, @RequestParam String model) {
+        return ResponseEntity.ok(carService.buildCar(brand,model));
+    }
+
+    @GetMapping("/find{id}")
     //ResponseEntity - represent the whole HTTP response: status code, headers and body
-    public ResponseEntity<Car> findCar() {
+    public ResponseEntity<Car> findCar(@PathVariable Long id) {
         return ResponseEntity.ok(carService.findById(10L));
     }
 }

@@ -1,6 +1,8 @@
 package pl.pjatkcom.example.FactoryApplication;
 
 import org.springframework.stereotype.Service;
+
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -14,10 +16,12 @@ public class CarService {
 
     public Car buildCar(String brand, String model) {
         Car car = new Car(brand,model,4,6);
-
         return carRepository.save(car);
     }
 
+    public void print(Car car) {
+        System.out.println(car);
+    }
 
     public void addWheel(Car car) {
         if (car.getWheels() < 5 ) {
@@ -28,18 +32,36 @@ public class CarService {
         }
     }
 
-    public Car findById(Long id) {
-        Optional<Car> byId = carRepository.findById(id);
-        if (byId.isPresent()) {
-            return byId.get();
-        } else {
-            return null;
-        }
+    public String convertBrandUP(Car car) {
+        return car.getBrand().toUpperCase(Locale.ROOT);
     }
 
-    //Poczytac o PathVarVariable
-    //POCZYTAC O OPTIONAL
-    //POCZYTAC O REQUESTPARAM
-    //PRZECWICZYC ROZNE ZAPYTANIA Z CARREPOSITORY
-    //POCZYTAC O JPAREPOSITORY
+    public String convertBrandLOW(Car car) {
+        return car.getBrand().toLowerCase(Locale.ROOT);
+    }
+
+    public String covertModelUP(Car car) {
+        return car.getModel().toUpperCase(Locale.ROOT);
+    }
+
+    public String covertModelLOW(Car car) {
+        return car.getModel().toLowerCase(Locale.ROOT);
+    }
+
+    public void changeGearUP(Car car) {
+       car.setGears(car.getGears() + 1);
+    }
+
+    public void changeGearDOWN(Car car) {
+        car.setGears(car.getGears() - 1);
+    }
+
+    public void removeWheel(Car car) {
+        car.setWheels(car.getWheels());
+    }
+
+    public Car findById(Long id) {
+        Optional<Car> byId = carRepository.findById(id);
+        return  byId.orElse(null);
+    }
 }
