@@ -53,7 +53,7 @@ public class CarService {
             System.out.println(car.getGears() + 1);
             System.out.println("You change gear");
         } else {
-            System.out.println("You can't change up gear");
+            System.out.println("You can't change gear up");
         }
     }
 
@@ -62,7 +62,7 @@ public class CarService {
             System.out.println(car.getGears() - 1);
             System.out.println("You change gear");
         } else {
-            System.out.println("You can't change down gear");
+            System.out.println("You can't change gear down");
         }
 
     }
